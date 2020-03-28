@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SKU DATA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+    <div class="container my-2">
+    <div class="card">
+    <div class="card-body">
+        <div th:switch="${skudata}" class="container my-5">
+            
+            <div class="col-md-10">
+                <h2 th:case="null">No record found !!</h2>
+                <div th:case="*">
+                    <table class="table table-striped table-responsive-md">
+                        <thead>
+                            <tr>
+                                <th>SKU ID</th>
+                                <th>SKU Description</th>
+                                <th>Location</th>
+                                <th>Department</th>
+                                <th>Category</th>
+                                <th>Sub Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="data : ${skudata}">
+                                <td th:text="${data.skuId}"></td>
+                                <td th:text="${data.skuDescription}"></td>
+                                <td th:text="${data.location.locationName}"></td>
+                                <td th:text="${data.department.departmentName}"></td>
+                                <td th:text="${data.category.categoryName}"></td>
+                                <td th:text="${data.subCategory.subCategoryName}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>
